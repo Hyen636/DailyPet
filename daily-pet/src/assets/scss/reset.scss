@@ -21,6 +21,7 @@ time, mark, audio, video {
 html{
     font-size: 62.5%;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -28,6 +29,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	font-size: 1.6rem;
 }
 ol, ul {
 	list-style: none;
