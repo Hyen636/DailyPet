@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const props = defineProps<{ isLarge: boolean }>()
+const props = defineProps<{ id?: string; isLarge: boolean; onClickEvent?: () => void }>()
 </script>
 
 <template>
-  <button :class="[{ 'btn--large': isLarge }, 'btn']">
+  <button :class="[{ 'btn--large': isLarge }, 'btn']" :form="id" @click.prevent="onClickEvent">
     <slot></slot>
   </button>
 </template>

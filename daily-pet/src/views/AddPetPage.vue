@@ -1,28 +1,23 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Plus from '@/assets/icon/Plus.vue'
-import Input from '../components/Form/Input/InputAddPet.vue'
-import Radio from '../components/Form/Radio/Radio.vue'
-import Checkbox from '../components/Form/Checkbox/Checkbox.vue'
-import Button from '../components/Button/ButtonAddPet.vue'
-import InputMedicine from '@/components/Form/Input/InputMedicine.vue'
+import Plus from '@/assets/icon/PlusIcon.vue'
+import TextInput from '../components/Form/Input/TextInput.vue'
+import DateInput from '../components/Form/Input/DateInput.vue'
+import RadioInput from '../components/Form/Input/RadioInput.vue'
+import Button from '../components/Form/Button/Button.vue'
+import ListInput from '@/components/Form/Input/ListInput/ListInput.vue'
 
 const selectedPet = ref<string>('강아지')
-const checkedBirthday = ref<boolean>(false)
-const checkedFirstday = ref<boolean>(false)
-const checkedGender = ref<boolean>(false)
-const checkedNeutralize = ref<boolean>(false)
-const checkedVaccin = ref<boolean>(false)
-const checkedToilet = ref<boolean>(false)
+const name = ref<string>('')
+const date = ref<string>('')
+const birthDay = ref<string>('')
+const weight = ref<string>('')
+const gender = ref<string>('')
+const neutering = ref<string>('')
+const vaccin = ref<string>('')
+const toilet = ref<string>('')
 
-const alertName = ref<boolean>(false)
-const alertBirthday = ref<boolean>(false)
-const alertFirstday = ref<boolean>(false)
-const alertWeight = ref<boolean>(false)
-const alertGender = ref<boolean>(false)
-const alertNeutralize = ref<boolean>(false)
-const alertVaccin = ref<boolean>(false)
-const alertToilet = ref<boolean>(false)
+const onSubmit = () => {}
 </script>
 
 <template>
@@ -51,105 +46,64 @@ const alertToilet = ref<boolean>(false)
         />
         <label for="cat" class="btn_choose_pet">고양이</label>
       </div>
-
-      <Input
-        span="이름"
-        name="text"
-        type="text"
-        class="input_text"
-        alert="올바른 형식이 아닙니다."
-        :showAlert="alertName"
-      />
-
-      <Input
-        span="생일"
-        name="date"
-        type="date"
-        class="input_date"
-        alert="올바른 날짜가 아닙니다."
-        :disabled="checkedBirthday"
-        :showAlert="alertBirthday"
-      >
-        <Checkbox id="birthday" label="몰라요" v-model="checkedBirthday" />
-      </Input>
-
-      <Input
-        span="처음 만난 날"
-        name="date"
-        type="date"
-        class="input_date"
-        alert="올바른 날짜가 아닙니다."
-        :disabled="checkedFirstday"
-        :showAlert="alertFirstday"
-      >
-        <Checkbox id="firstday" label="몰라요" v-model="checkedFirstday" />
-      </Input>
-
-      <Input
-        span="몸무게"
-        name="text"
-        type="text"
-        class="input_text"
-        alert="올바른 형식이 아닙니다."
-        :showAlert="alertWeight"
-      />
-
-      <Radio
-        span="성별"
-        name="gender"
-        id="male"
-        id2="female"
-        label="남"
-        label2="여"
-        :disabled="checkedGender"
-        :showAlert="alertGender"
-      >
-        <Checkbox id="gender" label="몰라요" v-model="checkedGender" />
-      </Radio>
-      <Radio
-        span="중성화"
-        name="neutralize"
-        id="yesN"
-        id2="noN"
-        label="O"
-        label2="X"
-        :disabled="checkedNeutralize"
-        :showAlert="alertNeutralize"
-      >
-        <Checkbox id="neutralize" label="몰라요" v-model="checkedNeutralize" />
-      </Radio>
-      <Radio
-        span="필수접종"
-        name="vaccin"
-        id="yesV"
-        id2="noV"
-        label="O"
-        label2="X"
-        :disabled="checkedVaccin"
-        :showAlert="alertVaccin"
-      >
-        <Checkbox id="vaccin" label="몰라요" v-model="checkedVaccin" />
-      </Radio>
-      <InputMedicine />
-      <Radio
-        span="배변장소"
-        name="toilet"
-        id="indoor"
-        id2="outdoor"
-        label="실내"
-        label2="실외"
-        :disabled="checkedToilet"
-        :showAlert="alertToilet"
-        v-if="selectedPet === '강아지'"
-      >
-        <Checkbox id="toilet" label="둘다" v-model="checkedToilet" />
-      </Radio>
-      <Button btn_name="등록하기" />
+      <form id="addPet" :submit.prevent="onSubmit">
+        <TextInput label="이름" name="text" type="text" errorMessage="" v-model="name" />
+        <DateInput label="생일" name="birthDay" errorMessage="" v-model="date" />
+        <DateInput label="처음 만난 날" name="firstDay" errorMessage="" v-model="birthDay" />
+        <TextInput label="몸무게" name="weight" type="number" errorMessage="" v-model="weight" />
+        <RadioInput
+          label="성별"
+          name="gender"
+          leftId="male"
+          rightId="female"
+          leftLabel="남"
+          rightLabel="여"
+          error-message=""
+          v-model="gender"
+        />
+        <RadioInput
+          label="중성화"
+          name="neutering"
+          leftId="didNeutering"
+          rightId="didNotNeutering"
+          leftLabel="O"
+          rightLabel="X"
+          error-message=""
+          v-model="neutering"
+        />
+        <RadioInput
+          label="필수접종"
+          name="vaccin"
+          leftId="didVaccin"
+          rightId="didNotVaccin"
+          leftLabel="O"
+          rightLabel="X"
+          error-message=""
+          v-model="vaccin"
+        />
+        <ListInput
+          label="약 및 기타 건강식품 (비타민, 유산균 등)"
+          name="medicine"
+          error-message=""
+        />
+        <RadioInput
+          v-if="selectedPet === '강아지'"
+          label="배변장소"
+          name="toilet"
+          leftId="indoor"
+          rightId="outdoor"
+          leftLabel="실내"
+          rightLabel="실외"
+          error-message=""
+          v-model="toilet"
+        />
+      </form>
+      <Button id="addPet" :isLarge="true" :on-click-event="onSubmit">등록하기</Button>
     </section>
   </main>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .profile_image {
   width: 12rem;
   height: 12rem;
@@ -163,13 +117,24 @@ const alertToilet = ref<boolean>(false)
 }
 
 .main_add_pet {
+  max-width: 30rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .section_add_pet {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
