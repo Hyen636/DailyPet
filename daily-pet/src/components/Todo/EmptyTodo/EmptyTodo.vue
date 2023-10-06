@@ -1,61 +1,24 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="todo">
-    <div class="todo__header">
-      <span class="todo__date">2023.09.12</span>
-      <span class="todo__title">오늘의 할일</span>
-    </div>
-    <div class="todo__content">
-      <div class="todo__empty">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
-          viewBox="0 0 30 30"
-          fill="none"
-        >
-          <path
-            d="M28.125 13.125H16.875V1.875C16.875 1.37772 16.6775 0.900806 16.3258 0.549175C15.9742 0.197544 15.4973 0 15 0C14.5027 0 14.0258 0.197544 13.6742 0.549175C13.3225 0.900806 13.125 1.37772 13.125 1.875V13.125H1.875C1.37772 13.125 0.900806 13.3225 0.549175 13.6742C0.197544 14.0258 0 14.5027 0 15C0 15.4973 0.197544 15.9742 0.549175 16.3258C0.900806 16.6775 1.37772 16.875 1.875 16.875H13.125V28.125C13.125 28.6223 13.3225 29.0992 13.6742 29.4508C14.0258 29.8025 14.5027 30 15 30C15.4973 30 15.9742 29.8025 16.3258 29.4508C16.6775 29.0992 16.875 28.6223 16.875 28.125V16.875H28.125C28.6223 16.875 29.0992 16.6775 29.4508 16.3258C29.8025 15.9742 30 15.4973 30 15C30 14.5027 29.8025 14.0258 29.4508 13.6742C29.0992 13.3225 28.6223 13.125 28.125 13.125Z"
-            fill="#868686"
-          />
-        </svg>
-      </div>
-    </div>
-  </div>
+  <router-link to="/todo" class="todo__empty">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+      <path
+        d="M28.125 13.125H16.875V1.875C16.875 1.37772 16.6775 0.900806 16.3258 0.549175C15.9742 0.197544 15.4973 0 15 0C14.5027 0 14.0258 0.197544 13.6742 0.549175C13.3225 0.900806 13.125 1.37772 13.125 1.875V13.125H1.875C1.37772 13.125 0.900806 13.3225 0.549175 13.6742C0.197544 14.0258 0 14.5027 0 15C0 15.4973 0.197544 15.9742 0.549175 16.3258C0.900806 16.6775 1.37772 16.875 1.875 16.875H13.125V28.125C13.125 28.6223 13.3225 29.0992 13.6742 29.4508C14.0258 29.8025 14.5027 30 15 30C15.4973 30 15.9742 29.8025 16.3258 29.4508C16.6775 29.0992 16.875 28.6223 16.875 28.125V16.875H28.125C28.6223 16.875 29.0992 16.6775 29.4508 16.3258C29.8025 15.9742 30 15.4973 30 15C30 14.5027 29.8025 14.0258 29.4508 13.6742C29.0992 13.3225 28.6223 13.125 28.125 13.125Z"
+        fill="#868686"
+      />
+    </svg>
+  </router-link>
 </template>
 
 <style lang="scss" scoped>
-.todo {
+.todo__empty {
+  width: 100%;
+  aspect-ratio: 1/1;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 2rem;
-  padding: 0rem 3rem;
-  .todo__header {
-    align-self: self-start;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    color: #5f5f5f;
-    .todo__date {
-      font-size: 1.4rem;
-    }
-    .todo__title {
-      font-size: 2rem;
-    }
-  }
-  .todo__content {
-    width: 100%;
-    .todo__empty {
-      width: 100%;
-      aspect-ratio: 1/1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 3.3rem;
-      box-shadow: 0rem 0.3rem 1rem 0rem rgba(0, 0, 0, 0.15);
-    }
-  }
+  border-radius: 3.3rem;
+  box-shadow: 0rem 0.3rem 1rem 0rem rgba(0, 0, 0, 0.15);
 }
 </style>
