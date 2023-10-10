@@ -9,6 +9,7 @@ import EditPetPage from '../views/EditPetPage.vue'
 import TodoPage from '../views/TodoPage.vue'
 import DiaryPage from '../views/DiaryPage.vue'
 import MyPage from '../views/MyPage.vue'
+import AddDiaryPage from '../views/AddDiaryPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,6 +58,11 @@ const router = createRouter({
       path: '/diary',
       name: 'diary',
       component: DiaryPage
+    },
+    {
+      path: '/add-diary',
+      name: 'addDiary',
+      component: AddDiaryPage
     },
     {
       path: '/my-page',
