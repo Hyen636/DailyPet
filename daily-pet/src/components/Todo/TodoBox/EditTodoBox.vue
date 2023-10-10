@@ -4,7 +4,7 @@ import { ref } from 'vue'
 const props = defineProps({
   title: { type: String, required: true },
   subTitle: String,
-  buttonType: String,
+  isCheckType: Boolean,
   maxCountCheck: { type: Number, default: 0 },
   isTodoCheck: Boolean
 })
@@ -26,7 +26,7 @@ const onClickTodoBox = () => {
       <span class="edit-todo-box__sub-title">{{ subTitle }}</span>
     </div>
     <div class="edit-todo-box__footer">
-      <div v-if="buttonType === 'check'" class="edit-btn-container">
+      <div v-if="isCheckType" class="edit-btn-container">
         <div v-if="maxCountCheck >= 3" class="edit-btn-container__check-btn"></div>
         <div v-if="maxCountCheck >= 2" class="edit-btn-container__check-btn"></div>
         <div v-if="maxCountCheck >= 1" class="edit-btn-container__check-btn"></div>

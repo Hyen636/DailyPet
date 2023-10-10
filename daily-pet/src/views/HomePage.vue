@@ -39,22 +39,22 @@ const profile = reactive({
       <TodoBox
         title="식사량"
         sub-title="20/60g"
-        button-type="check"
+        :is-check-type="true"
         :maxCountCheck="3"
         :count-check="0"
       />
-      <TodoBox title="배변" sub-title="건강한상태" button-type="normal" :is-todo-check="true" />
+      <TodoBox title="배변" sub-title="건강한상태" :is-todo-check="true" />
       <TodoBox
         title="유산균"
         sub-title="1/2g"
-        button-type="check"
+        :is-check-type="true"
         :maxCountCheck="2"
         :count-check="2"
         :is-todo-check="true"
       />
       <TodoBox title="간식" button-type="normal" />
       <TodoBox title="심장사상충" sub-title="2023.10.05" />
-      <EditTodoBox title="식사량" sub-title="일일 60g" button-type="check" :max-count-check="3" />
+      <EditTodoBox title="식사량" sub-title="일일 60g" :is-check-type="true" :max-count-check="3" />
     </div>
     <EmptyTodo v-else />
   </div>

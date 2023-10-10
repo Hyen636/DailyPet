@@ -4,7 +4,7 @@ import { ref } from 'vue'
 const props = defineProps({
   title: { type: String, required: true },
   subTitle: String,
-  buttonType: String,
+  isCheckType: Boolean,
   maxCountCheck: { type: Number, default: 0 },
   countCheck: { type: Number, default: 0 },
   isTodoCheck: Boolean
@@ -38,7 +38,7 @@ const onClickNormalBtn = () => {
       }}</span>
     </div>
     <div class="todo-box__footer">
-      <div v-if="buttonType === 'check'" class="btn-container" @click="onClickCheckBtn">
+      <div v-if="isCheckType" class="btn-container" @click="onClickCheckBtn">
         <div
           v-if="maxCountCheck >= 3"
           :class="[
@@ -103,7 +103,7 @@ const onClickNormalBtn = () => {
           </svg>
         </div>
       </div>
-      <div v-if="buttonType === 'normal'" class="btn-container">
+      <div v-if="!isCheckType" class="btn-container">
         <button
           :class="['btn-container__btn', { 'btn-container__btn--checked': isTodoCheck }]"
           @click="onClickNormalBtn"
