@@ -23,7 +23,7 @@ const onSubmit = () => {}
 <template>
   <main class="main_add_pet">
     <div class="profile_image">
-      <Plus />
+      <Plus fill="White" />
     </div>
     <section class="section_add_pet">
       <div class="tab_choose_pet">
